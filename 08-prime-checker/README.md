@@ -36,3 +36,14 @@ Use small nonnegative integers; large inputs can block the browser.
 Trace the example through the source, try an empty input and a boundary case, and explain the result. Read the limits above before extending the demo.
 
 The preview is an illustration of a documented use case, not a captured screenshot.
+
+## Native C version
+
+`main.c` provides a separate C11 command-line implementation. From the repository root, with GCC or Clang installed:
+
+```sh
+cc -std=c11 -Wall -Wextra -Werror 08-prime-checker/main.c -o prime
+./prime 29
+```
+
+Expected output: `prime`. On Windows, use `prime.exe` as the output name and run `.\prime.exe`. Invalid arguments exit with status 1 and an error on stderr. See [native guide](../native/README.md) for numeric limits and automated compilation checks.

@@ -36,3 +36,14 @@ Large factorials are approximate; detail formatting is illustrative.
 Trace the example through the source, try an empty input and a boundary case, and explain the result. Read the limits above before extending the demo.
 
 The preview is an illustration of a documented use case, not a captured screenshot.
+
+## Native C version
+
+`main.c` provides a separate C11 command-line implementation. From the repository root, with GCC or Clang installed:
+
+```sh
+cc -std=c11 -Wall -Wextra -Werror 12-factorial-calculator/main.c -o factorial
+./factorial 5
+```
+
+Expected output: `120`. On Windows, use `factorial.exe` as the output name and run `.\factorial.exe`. Invalid arguments exit with status 1 and an error on stderr. See [native guide](../native/README.md) for numeric limits and automated compilation checks.

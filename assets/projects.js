@@ -1,4 +1,4 @@
-/* Source-reviewed catalogue. No network requests required. */
+/* Catalogue of implemented demos and planned briefs. */
 window.MINI_PROJECTS = [
   {
     "id": 1,
@@ -719,22 +719,22 @@ window.MINI_PROJECTS = [
     "id": 66,
     "slug": "66-student-database",
     "title": "Student Database",
-    "description": "Planned student record manager.",
+    "description": "Create, search, edit and delete student records.",
     "example": "Goal: add ID 101, search it, update and delete it.",
-    "approach": "Define validated records with unique IDs and storage.",
-    "note": "A project brief; CRUD operations are not implemented.",
-    "status": "planned",
+    "approach": "Validate unique IDs and records, render text safely, and persist a versioned collection in localStorage.",
+    "note": "Local browser demo, not a shared database. Storage may be unavailable; JSON export provides a backup. No real personal records are needed.",
+    "status": "demo",
     "category": "Management apps"
   },
   {
     "id": 67,
     "slug": "67-library-management",
     "title": "Library Management",
-    "description": "Planned book catalogue and loan management.",
+    "description": "Manage books, borrowers and returns.",
     "example": "Goal: borrow an available book and restore availability on return.",
-    "approach": "Track book records and loan state.",
-    "note": "A project brief; borrowing and persistence are not implemented.",
-    "status": "planned",
+    "approach": "Validate unique IDs and records, render text safely, and persist a versioned collection in localStorage.",
+    "note": "Local browser demo, not a shared database. Storage may be unavailable; JSON export provides a backup. No real personal records are needed.",
+    "status": "demo",
     "category": "Management apps"
   },
   {
@@ -763,11 +763,11 @@ window.MINI_PROJECTS = [
     "id": 70,
     "slug": "70-inventory-management",
     "title": "Inventory Management",
-    "description": "Planned stock management.",
+    "description": "Manage stock quantities, unit prices and total stock value.",
     "example": "Goal: create a SKU and reject stock reductions below zero.",
-    "approach": "Track quantities and stock changes.",
-    "note": "Stock operations are not implemented.",
-    "status": "planned",
+    "approach": "Validate unique IDs and records, render text safely, and persist a versioned collection in localStorage.",
+    "note": "Local browser demo, not a shared database. Storage may be unavailable; JSON export provides a backup. No real personal records are needed.",
+    "status": "demo",
     "category": "Management apps"
   },
   {

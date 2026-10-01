@@ -1,42 +1,25 @@
 # 66. Student Database
 
-[Project gallery](../index.html) · [Collection guide](../README.md) · [Open page](index.html)
+[Gallery](../index.html) · [Open demo](index.html)
 
-**Status:** Planned. This is a project brief. The proposed functionality is not implemented.
+**Status: Demo** — Create, search, edit and delete student records.
 
-![Illustrated guide card, not a screenshot](../assets/previews/66-student-database.svg)
+## Try it
 
-Planned student record manager.
+add ID 101, search it, update and delete it.
 
-## Files and technology
+Add a record, search by any field, edit it, then delete it. IDs must be unique and all fields are required. Library records support borrow and return, and prevent borrowing a book twice. Inventory quantities are whole nonnegative numbers, and prices are nonnegative amounts with two decimal places.
 
-- `index.html`: project brief and checklist.
-- `README.md`: purpose, example, implementation and limits.
-- Shared catalogue, navigation and preview assets live in `../assets/`.
-A future implementation may need an explicit native runtime. See the scope below.
+## How it works
 
-## Acceptance example
+The interface in `index.html` uses `../assets/management.js` and the reusable validation and immutable record operations in `../assets/management-core.js`. Records use a versioned localStorage key. Invalid saved collections fall back to sample records with a visible notice. Values are rendered with textContent.
 
-Goal: add ID 101, search it, update and delete it.
+## Persistence and limits
 
-This example is a development goal, not an available feature.
+This is a browser learning demo, with no login, server or shared database. Browser storage can be cleared or unavailable. Export JSON for a backup; importing backups is not implemented. At most 10000 records, and text fields are limited to 120 characters. Inventory quantities and prices are capped at 1000000. No real personal data is necessary.
 
-## Suggested approach
+## Checks and exercise
 
-Define validated records with unique IDs and storage.
+`npm test` checks validation, duplicate IDs, search and library loan operations. `npm run test:browser` checks each app in a real browser, including persistence. Exercise: add a validated JSON import with a confirmation preview.
 
-
-
-## Scope and limitations
-
-A project brief; CRUD operations are not implemented.
-
-## Development checklist
-
-- [ ] Define inputs, outputs and invalid-input behavior.
-- [ ] Implement the acceptance example.
-- [ ] Add validation, explanatory results and keyboard access.
-- [ ] Document runtime, persistence and limits.
-- [ ] Add meaningful checks before changing status to demo.
-
-The preview is an illustration of the intended project, not a captured screenshot.
+![Illustrated guide preview](../assets/previews/66-student-database.svg)

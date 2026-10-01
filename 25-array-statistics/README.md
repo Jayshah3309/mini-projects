@@ -36,3 +36,14 @@ At most 10000 entries; floating point results may round.
 Trace the example through the source, try an empty input and a boundary case, and explain the result. Read the limits above before extending the demo.
 
 The preview is an illustration of a documented use case, not a captured screenshot.
+
+## Native C version
+
+`main.c` provides a separate C11 command-line implementation. From the repository root, with GCC or Clang installed:
+
+```sh
+cc -std=c11 -Wall -Wextra -Werror 25-array-statistics/main.c -o statistics
+./statistics 1 2 3 4
+```
+
+Expected output: `count=4 sum=10 min=1 max=4 mean=2.5 median=2.5`. On Windows, use `statistics.exe` as the output name and run `.\statistics.exe`. Invalid arguments exit with status 1 and an error on stderr. See [native guide](../native/README.md) for numeric limits and automated compilation checks.

@@ -36,3 +36,11 @@ Display checks root balance, not every node.
 Trace the example through the source, try an empty input and a boundary case, and explain the result. Read the limits above before extending the demo.
 
 The preview is an illustration of a documented use case, not a captured screenshot.
+
+## Step-by-step trace
+
+The independent learning panel provides Step, Play, Pause, Reset and interval controls. Sorting and tree traces accept up to 20 finite numbers. Graph traces use the documented fixed sample graph. Tree snapshots show root/L/R paths; AVL snapshots are taken after each insertion and rebalance, while heap snapshots include sift-up swaps. This trace does not change the original demo controls.
+
+## Pseudocode, complexity and exercises
+
+See the [Avl Tree learning notes](../docs/ALGORITHMS.md#48-avl-tree) for pseudocode, a worked example, time/space cost and an exercise.

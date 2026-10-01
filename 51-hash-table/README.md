@@ -36,3 +36,7 @@ Fixed eight buckets; no resizing.
 Trace the example through the source, try an empty input and a boundary case, and explain the result. Read the limits above before extending the demo.
 
 The preview is an illustration of a documented use case, not a captured screenshot.
+
+## Pseudocode, complexity and exercises
+
+See the [Hash Table learning notes](../docs/ALGORITHMS.md#51-hash-table) for pseudocode, a worked example, time/space cost and an exercise.

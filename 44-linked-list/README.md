@@ -36,3 +36,7 @@ Array simulation; not pointer-based nodes.
 Trace the example through the source, try an empty input and a boundary case, and explain the result. Read the limits above before extending the demo.
 
 The preview is an illustration of a documented use case, not a captured screenshot.
+
+## Pseudocode, complexity and exercises
+
+See the [Linked List learning notes](../docs/ALGORITHMS.md#44-linked-list) for pseudocode, a worked example, time/space cost and an exercise.

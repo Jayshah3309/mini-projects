@@ -1,10 +1,10 @@
 # Mini Projects
 
-100 learning projects: **70 interactive browser demos and 30 planned project briefs**.
+100 learning projects: **73 interactive browser demos and 27 planned project briefs**.
 
-The current demos use **HTML, CSS and JavaScript**, usually embedded in each `index.html`. The topics include algorithms and C programming exercises, but native C programs are not present in this collection. Networking and embedded projects needing another runtime are clearly marked as planned.
+The current demos use **HTML, CSS and JavaScript**, usually embedded in each `index.html`. The topics include algorithms and C programming exercises, but eight selected folders now also contain independent native C11 programs. Networking and embedded projects needing another runtime are clearly marked as planned.
 
-[Open the live gallery](https://jayshah3309.github.io/mini-projects/) · [Detailed catalogue](docs/PROJECTS.md) · [Roadmap](docs/ROADMAP.md) · [Contributing](CONTRIBUTING.md)
+[Open the live gallery](https://jayshah3309.github.io/mini-projects/) · [Detailed catalogue](docs/PROJECTS.md) · [Roadmap](docs/ROADMAP.md) · [Contributing](CONTRIBUTING.md) · [Algorithm lessons](docs/ALGORITHMS.md) · [Native C](native/README.md) · [Testing](docs/TESTING.md) · [Changelog](CHANGELOG.md)
 
 ## Run locally
 
@@ -102,11 +102,11 @@ Start with Hello World and simple calculators, then searches and sorting, follow
 | 63 | Text Editor | Systems & simulations | Demo | [Open](63-text-editor/index.html) | [Read](63-text-editor/README.md) |
 | 64 | Process Monitor | Systems & simulations | Demo | [Open](64-process-monitor/index.html) | [Read](64-process-monitor/README.md) |
 | 65 | Memory Allocator | Systems & simulations | Demo | [Open](65-memory-allocator/index.html) | [Read](65-memory-allocator/README.md) |
-| 66 | Student Database | Management apps | Planned | [Open](66-student-database/index.html) | [Read](66-student-database/README.md) |
-| 67 | Library Management | Management apps | Planned | [Open](67-library-management/index.html) | [Read](67-library-management/README.md) |
+| 66 | Student Database | Management apps | Demo | [Open](66-student-database/index.html) | [Read](66-student-database/README.md) |
+| 67 | Library Management | Management apps | Demo | [Open](67-library-management/index.html) | [Read](67-library-management/README.md) |
 | 68 | Banking System | Management apps | Planned | [Open](68-banking-system/index.html) | [Read](68-banking-system/README.md) |
 | 69 | Employee Management | Management apps | Planned | [Open](69-employee-management/index.html) | [Read](69-employee-management/README.md) |
-| 70 | Inventory Management | Management apps | Planned | [Open](70-inventory-management/index.html) | [Read](70-inventory-management/README.md) |
+| 70 | Inventory Management | Management apps | Demo | [Open](70-inventory-management/index.html) | [Read](70-inventory-management/README.md) |
 | 71 | Contact Manager | Text & files | Demo | [Open](71-contact-manager/index.html) | [Read](71-contact-manager/README.md) |
 | 72 | Text Compression Lab | Text & files | Demo | [Open](72-file-compression/index.html) | [Read](72-file-compression/README.md) |
 | 73 | Log Analyzer | Text & files | Demo | [Open](73-log-analyzer/index.html) | [Read](73-log-analyzer/README.md) |
@@ -159,3 +159,26 @@ Planned TCP/server/UART projects need an explicit runtime or supported hardware 
 ## Review changes
 
 Open the gallery and affected pages in a modern browser. Try the documented example, empty inputs and boundary values. Review the layout at wide and narrow widths and navigate with a keyboard.
+
+## Development checks
+
+Opening the demos needs no dependencies. For development, use Node.js 22+ and Python 3:
+
+```sh
+npm ci
+npm run check
+npm test
+npx playwright install chromium
+npm run test:browser
+python tools/check_native.py
+```
+
+The final command requires GCC or a compiler selected with `CC`. See [testing and accessibility](docs/TESTING.md) for coverage and manual review. Screenshots are generated from actual browser pages; the original SVG guide cards remain clearly labelled illustrations.
+
+## What is new
+
+Three management apps now save validated records locally. Thirteen algorithms have controllable learning traces, and 26 topics have pseudocode, worked examples and complexity notes. Eight folders include C11 versions alongside their browser demos.
+
+## License
+
+See [licensing status](docs/LICENSING.md). No license is granted unless a LICENSE file is added following the owner's choice.

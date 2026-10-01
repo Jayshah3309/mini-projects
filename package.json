@@ -1,0 +1,16 @@
+{
+  "name": "mini-projects-learning",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Browser demos and native C learning examples",
+  "scripts": {
+    "test": "node --test tests/unit.test.cjs",
+    "check": "python tools/check_repository.py",
+    "test:browser": "playwright test",
+    "serve": "python -m http.server 8000"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@axe-core/playwright": "^4.10.2"
+  }
+}

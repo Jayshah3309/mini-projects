@@ -36,3 +36,18 @@ Input must be sorted ascending.
 Trace the example through the source, try an empty input and a boundary case, and explain the result. Read the limits above before extending the demo.
 
 The preview is an illustration of a documented use case, not a captured screenshot.
+
+## Native C version
+
+`main.c` provides a separate C11 command-line implementation. From the repository root, with GCC or Clang installed:
+
+```sh
+cc -std=c11 -Wall -Wextra -Werror 27-binary-search/main.c -o binary
+./binary 7 1 3 5 7 9
+```
+
+Expected output: `index=3`. On Windows, use `binary.exe` as the output name and run `.\binary.exe`. Invalid arguments exit with status 1 and an error on stderr. See [native guide](../native/README.md) for numeric limits and automated compilation checks.
+
+## Pseudocode, complexity and exercises
+
+See the [Binary Search learning notes](../docs/ALGORITHMS.md#27-binary-search) for pseudocode, a worked example, time/space cost and an exercise.

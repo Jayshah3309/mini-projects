@@ -4,17 +4,17 @@ Complete the documented acceptance example and appropriate checks before marking
 
 ## [66. Student Database](../66-student-database/README.md)
 
-- [ ] Goal: add ID 101, search it, update and delete it.
-- [ ] Define validated records with unique IDs and storage.
-- [ ] Document runtime, persistence and errors; add meaningful checks.
-- [ ] Update status only after functionality exists.
+- [x] Goal: add ID 101, search it, update and delete it.
+- [x] Define validated records with unique IDs and storage.
+- [x] Document runtime, persistence and errors; add meaningful checks.
+- [x] Update status only after functionality exists.
 
 ## [67. Library Management](../67-library-management/README.md)
 
-- [ ] Goal: borrow an available book and restore availability on return.
-- [ ] Track book records and loan state.
-- [ ] Document runtime, persistence and errors; add meaningful checks.
-- [ ] Update status only after functionality exists.
+- [x] Goal: borrow an available book and restore availability on return.
+- [x] Track book records and loan state.
+- [x] Document runtime, persistence and errors; add meaningful checks.
+- [x] Update status only after functionality exists.
 
 ## [68. Banking System](../68-banking-system/README.md)
 
@@ -32,10 +32,10 @@ Complete the documented acceptance example and appropriate checks before marking
 
 ## [70. Inventory Management](../70-inventory-management/README.md)
 
-- [ ] Goal: create a SKU and reject stock reductions below zero.
-- [ ] Track quantities and stock changes.
-- [ ] Document runtime, persistence and errors; add meaningful checks.
-- [ ] Update status only after functionality exists.
+- [x] Goal: create a SKU and reject stock reductions below zero.
+- [x] Track quantities and stock changes.
+- [x] Document runtime, persistence and errors; add meaningful checks.
+- [x] Update status only after functionality exists.
 
 ## [76. TCP Chat Server](../76-tcp-chat-server/README.md)
 

@@ -36,3 +36,14 @@ Resets on refresh.
 Trace the example through the source, try an empty input and a boundary case, and explain the result. Read the limits above before extending the demo.
 
 The preview is an illustration of a documented use case, not a captured screenshot.
+
+## Native C version
+
+`main.c` provides a separate C11 command-line implementation. From the repository root, with GCC or Clang installed:
+
+```sh
+cc -std=c11 -Wall -Wextra -Werror 01-hello-world/main.c -o hello
+./hello Jay
+```
+
+Expected output: `Hello, Jay!`. On Windows, use `hello.exe` as the output name and run `.\hello.exe`. Invalid arguments exit with status 1 and an error on stderr. See [native guide](../native/README.md) for numeric limits and automated compilation checks.

@@ -784,27 +784,29 @@ First-fit allocation in a 64 KB simulated pool.
 
 ## 66. [Student Database](../66-student-database/README.md)
 
-**Status:** Planned · **Category:** Management apps
+**Status:** Demo · **Category:** Management apps
 
-Planned student record manager.
+Create, search, edit and delete student records.
 
-**Example:** Goal: add ID 101, search it, update and delete it.
+**Example:** add ID 101, search it, update and delete it.
 
-**Plan:** Define validated records with unique IDs and storage.
+**How it works:** Validate unique IDs and records, render text safely, and persist a versioned collection in localStorage.
 
-**Limits:** A project brief; CRUD operations are not implemented.
+**Limits:** Local browser demo, not a shared database. Storage may be unavailable; JSON export provides a backup. No real personal records are needed.
+
 
 ## 67. [Library Management](../67-library-management/README.md)
 
-**Status:** Planned · **Category:** Management apps
+**Status:** Demo · **Category:** Management apps
 
-Planned book catalogue and loan management.
+Manage books, borrowers and returns.
 
-**Example:** Goal: borrow an available book and restore availability on return.
+**Example:** borrow an available book and restore availability on return.
 
-**Plan:** Track book records and loan state.
+**How it works:** Validate unique IDs and records, render text safely, and persist a versioned collection in localStorage.
 
-**Limits:** A project brief; borrowing and persistence are not implemented.
+**Limits:** Local browser demo, not a shared database. Storage may be unavailable; JSON export provides a backup. No real personal records are needed.
+
 
 ## 68. [Banking System](../68-banking-system/README.md)
 
@@ -832,15 +834,16 @@ Planned employee directory.
 
 ## 70. [Inventory Management](../70-inventory-management/README.md)
 
-**Status:** Planned · **Category:** Management apps
+**Status:** Demo · **Category:** Management apps
 
-Planned stock management.
+Manage stock quantities, unit prices and total stock value.
 
-**Example:** Goal: create a SKU and reject stock reductions below zero.
+**Example:** create a SKU and reject stock reductions below zero.
 
-**Plan:** Track quantities and stock changes.
+**How it works:** Validate unique IDs and records, render text safely, and persist a versioned collection in localStorage.
 
-**Limits:** Stock operations are not implemented.
+**Limits:** Local browser demo, not a shared database. Storage may be unavailable; JSON export provides a backup. No real personal records are needed.
+
 
 ## 71. [Contact Manager](../71-contact-manager/README.md)
 

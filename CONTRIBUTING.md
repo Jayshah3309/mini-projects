@@ -10,3 +10,7 @@
 Use relative paths and avoid unnecessary dependencies. Document native runtimes for projects that need them. Do not commit secrets, personal records, dependency folders or machine-specific paths.
 
 No licence has been selected for this repository; these changes do not impose a new licence.
+
+## Automated checks
+
+Follow [testing setup](docs/TESTING.md). Run `npm run check` and `npm test` for every change. Run browser checks for interface changes, and native compilation checks for C changes. Document the relevant expected-output example and any new limits.

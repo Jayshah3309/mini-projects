@@ -1,0 +1,27 @@
+name: Bug report
+description: Report a reproducible problem in a demo or the gallery.
+title: "[Bug]: "
+body:
+  - type: input
+    id: project
+    attributes:
+      label: Project number or URL
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and exact input
+      description: Include sample input without personal data.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, version and device
