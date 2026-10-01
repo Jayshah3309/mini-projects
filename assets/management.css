@@ -101,3 +101,7 @@ label {
     padding: 16px 10px;
   }
 }
+
+.table-scroll table { min-width: 640px; }
+.table-scroll th { white-space: nowrap; }
+.table-scroll td { overflow-wrap: break-word; }
