@@ -55,3 +55,7 @@ Expected output: `1 2 5 9`. On Windows, use `bubble.exe` as the output name and 
 ## Pseudocode, complexity and exercises
 
 See the [Bubble Sort learning notes](../docs/ALGORITHMS.md#28-bubble-sort) for pseudocode, a worked example, time/space cost and an exercise.
+
+## Actual screenshots
+
+[Desktop](../assets/screenshots/28-bubble-sort-desktop.png) · [Mobile](../assets/screenshots/28-bubble-sort-mobile.png). See the [screenshot guide](../docs/SCREENSHOTS.md) for capture conditions.

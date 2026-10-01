@@ -23,3 +23,7 @@ This is a browser learning demo, with no login, server or shared database. Brows
 `npm test` checks validation, duplicate IDs, search and library loan operations. `npm run test:browser` checks each app in a real browser, including persistence. Exercise: add a validated JSON import with a confirmation preview.
 
 ![Illustrated guide preview](../assets/previews/66-student-database.svg)
+
+## Actual screenshots
+
+[Desktop](../assets/screenshots/66-student-database-desktop.png) · [Mobile](../assets/screenshots/66-student-database-mobile.png). See the [screenshot guide](../docs/SCREENSHOTS.md) for capture conditions.

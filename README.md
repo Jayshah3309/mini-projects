@@ -6,7 +6,7 @@
 
 The current demos use **HTML, CSS and JavaScript**, usually embedded in each `index.html`. The topics include algorithms and C programming exercises, but eight selected folders now also contain independent native C11 programs. Networking and embedded projects needing another runtime are clearly marked as planned.
 
-[Open the live gallery](https://jayshah3309.github.io/mini-projects/) · [Detailed catalogue](docs/PROJECTS.md) · [Roadmap](docs/ROADMAP.md) · [Contributing](CONTRIBUTING.md) · [Algorithm lessons](docs/ALGORITHMS.md) · [Native C](native/README.md) · [Testing](docs/TESTING.md) · [Changelog](CHANGELOG.md)
+[Open the live gallery](https://jayshah3309.github.io/mini-projects/) · [Detailed catalogue](docs/PROJECTS.md) · [Roadmap](docs/ROADMAP.md) · [Contributing](CONTRIBUTING.md) · [Algorithm lessons](docs/ALGORITHMS.md) · [Native C](native/README.md) · [Testing](docs/TESTING.md) · [Changelog](CHANGELOG.md) · [Actual screenshots](docs/SCREENSHOTS.md) · [Check results](docs/QUALITY.md)
 
 ## Run locally
 

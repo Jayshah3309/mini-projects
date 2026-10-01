@@ -44,3 +44,7 @@ The independent learning panel provides Step, Play, Pause, Reset and interval co
 ## Pseudocode, complexity and exercises
 
 See the [Avl Tree learning notes](../docs/ALGORITHMS.md#48-avl-tree) for pseudocode, a worked example, time/space cost and an exercise.
+
+## Actual screenshots
+
+[Desktop](../assets/screenshots/48-avl-tree-desktop.png) · [Mobile](../assets/screenshots/48-avl-tree-mobile.png). See the [screenshot guide](../docs/SCREENSHOTS.md) for capture conditions.

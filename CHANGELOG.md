@@ -12,6 +12,12 @@
 - Eight native C11 examples with compile instructions, bounded inputs and acceptance checks.
 - Unit checks, repository checks, desktop/mobile browser tests, accessibility scans and actual screenshot capture.
 - GitHub Actions checks and contributor issue/pull request templates.
+- Sixteen actual desktop/mobile screenshots of eight pages.
+
+### Fixed
+
+- Gallery Clear filters now resets search, category, sort and status without relying on a shadowed form method.
+- Management tables retain readable columns with horizontal scrolling on narrow screens.
 - Shared keyboard-focus, responsive and reduced-motion improvements.
 
 ### Status

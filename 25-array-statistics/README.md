@@ -47,3 +47,7 @@ cc -std=c11 -Wall -Wextra -Werror 25-array-statistics/main.c -o statistics
 ```
 
 Expected output: `count=4 sum=10 min=1 max=4 mean=2.5 median=2.5`. On Windows, use `statistics.exe` as the output name and run `.\statistics.exe`. Invalid arguments exit with status 1 and an error on stderr. See [native guide](../native/README.md) for numeric limits and automated compilation checks.
+
+## Actual screenshots
+
+[Desktop](../assets/screenshots/25-array-statistics-desktop.png) · [Mobile](../assets/screenshots/25-array-statistics-mobile.png). See the [screenshot guide](../docs/SCREENSHOTS.md) for capture conditions.

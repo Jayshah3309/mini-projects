@@ -44,3 +44,7 @@ The independent learning panel provides Step, Play, Pause, Reset and interval co
 ## Pseudocode, complexity and exercises
 
 See the [Dijkstra learning notes](../docs/ALGORITHMS.md#55-dijkstra) for pseudocode, a worked example, time/space cost and an exercise.
+
+## Actual screenshots
+
+[Desktop](../assets/screenshots/55-dijkstra-desktop.png) · [Mobile](../assets/screenshots/55-dijkstra-mobile.png). See the [screenshot guide](../docs/SCREENSHOTS.md) for capture conditions.
