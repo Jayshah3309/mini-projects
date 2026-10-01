@@ -18,34 +18,35 @@ h1{color:#7aa2f7;font-family:'Segoe UI',sans-serif;font-size:1.3rem;margin-botto
 .input-line input{flex:1;background:transparent;border:none;color:#c0caf5;font-family:'Consolas',monospace;font-size:.85rem;outline:none}
 .back{display:inline-block;margin-top:10px;color:#565f89;font-size:.85rem;font-family:'Segoe UI',sans-serif}
 </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
 <div class="card">
 <h1>⌨️ Command Interpreter</h1>
 <div class="terminal" id="terminal"><div class="cmd-line"><span class="info">Mini Interpreter v1.0 | Type 'help'</span></div></div>
 <div class="input-line"><span>»</span><input type="text" id="cmdInput" placeholder="Enter command..." autofocus /></div>
-<a class="back" href="../../index.html">← Back to Hub</a>
+<a class="back" href="../index.html">← Back to Hub</a>
 </div>
 <script>
 const terminal=document.getElementById('terminal');
 const input=document.getElementById('cmdInput');
-let vars={};
+let vars=Object.create(null);
 function print(text,cls=''){const d=document.createElement('div');d.className='cmd-line '+cls;d.innerHTML=text;terminal.appendChild(d);terminal.scrollTop=terminal.scrollHeight}
 function execute(cmd){
 if(!cmd.trim())return;
-print(`<span class="prompt">»</span> ${cmd}`);
+print(`<span class="prompt">»</span> ${escapeHTML(cmd)}`);
 const parts=cmd.trim().split(/\s+/);
 const c=parts[0].toLowerCase(),args=parts.slice(1);
 switch(c){
 case 'help':print('Commands: help, echo, print, set, calc, math, eval, date, whoami, clear, exit');break;
-case 'echo':print(args.join(' '));break;
-case 'print':print(args.join(' '));break;
+case 'echo':print(escapeHTML(args.join(' ')));break;
+case 'print':print(escapeHTML(args.join(' ')));break;
 case 'date':print(new Date().toString());break;
 case 'whoami':print('user');break;
 case 'clear':terminal.innerHTML='';break;
 case 'exit':print('Goodbye!');break;
 case 'set':
-if(args.length>=2){vars[args[0]]=args.slice(1).join(' ');print(`Set ${args[0]} = ${vars[args[0]]}`);}
+if(args.length>=2){vars[args[0]]=args.slice(1).join(' ');print(`Set ${escapeHTML(args[0])} = ${escapeHTML(vars[args[0]])}`);}
 else print('Usage: set var value','error');
 break;
 case 'calc':
@@ -53,17 +54,20 @@ case 'math':
 case 'eval':
 try{
 const expr=args.join(' ');
+if (!/^[\d\s.()+*/%\-]+$/.test(expr)) throw new Error('Use numeric arithmetic only.');
 const result=Function('"use strict";return ('+expr+')')();
 print(`= ${result}`);
-}catch(e){print(`Error: ${e.message}`,'error');}
+}catch(e){print(`Error: ${escapeHTML(e.message)}`,'error');}
 break;
 default:
-if(vars[c])print(vars[c]);
-else print(`Unknown command: ${c}`,'error');
+if(vars[c])print(escapeHTML(vars[c]));
+else print(`Unknown command: ${escapeHTML(c)}`,'error');
 }
 }
 input.addEventListener('keydown',e=>{if(e.key==='Enter'){execute(input.value);input.value='';}});
 </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

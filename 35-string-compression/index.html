@@ -20,6 +20,7 @@
     .ratio { color: #94a3b8; font-size: .85rem; }
     .back { margin-top: 18px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -28,7 +29,7 @@
     <div class="group"><label>Enter string</label><input type="text" id="inputStr" value="aabbbccccddddd" /></div>
     <button onclick="compress()">Compress</button>
     <div class="result" id="result">Click Compress</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     function compress() {
@@ -41,9 +42,11 @@
         else { result += s[i] + count; count = 1; }
       }
       const ratio = ((result.length / s.length) * 100).toFixed(1);
-      el.innerHTML = `<div class="compressed">${result}</div><div class="ratio">Original: ${s.length} chars → Compressed: ${result.length} chars (${ratio}%)</div>`;
+      el.innerHTML = `<div class="compressed">${escapeHTML(result)}</div><div class="ratio">Original: ${s.length} chars → Compressed: ${result.length} chars (${ratio}%)</div>`;
     }
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

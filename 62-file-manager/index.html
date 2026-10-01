@@ -24,6 +24,7 @@
     .info { color: #94a3b8; font-size: .85rem; margin-top: 8px; }
     .back { display: inline-block; margin-top: 12px; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -37,7 +38,7 @@
     </div>
     <div class="file-list" id="fileList"></div>
     <div class="info" id="fileInfo">Items: 0</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     let path = ['home', 'user'];
@@ -57,7 +58,7 @@
       document.getElementById('fileInfo').textContent = `Items: ${entries.length}`;
       if (entries.length === 0) { el.innerHTML = '<div style="color:#475569;padding:20px;text-align:center">Empty directory</div>'; return; }
       el.innerHTML = entries.map(([name, val]) => {
-        const isDir = typeof val === 'object' && !val.content;
+        const isDir = typeof val === 'object' && !Object.hasOwn(val, 'content');
         return `<div class="file-item" ${isDir ? `ondblclick="enterDir('${name}')"` : ''}>
           <span class="name">${isDir ? '📁' : '📄'} ${name}</span>
           <span class="type">${isDir ? 'folder' : typeof val === 'object' ? val.type || 'file' : 'file'}</span>
@@ -68,7 +69,7 @@
 
     function createFile() {
       const name = document.getElementById('fileName').value.trim();
-      if (!name) return;
+      if (!name) return; if (!/^[a-zA-Z0-9._ -]+$/.test(name) || name === '.' || name === '..' || Object.hasOwn(Object.prototype, name)) { alert('Use letters, numbers, spaces, dots, underscores or hyphens.'); return; }
       const dir = getDir();
       if (dir[name]) { alert('Already exists'); return; }
       dir[name] = { content: '', type: 'text' };
@@ -77,7 +78,7 @@
 
     function createDir() {
       const name = document.getElementById('fileName').value.trim();
-      if (!name) return;
+      if (!name) return; if (!/^[a-zA-Z0-9._ -]+$/.test(name) || name === '.' || name === '..' || Object.hasOwn(Object.prototype, name)) { alert('Use letters, numbers, spaces, dots, underscores or hyphens.'); return; }
       const dir = getDir();
       if (dir[name]) { alert('Already exists'); return; }
       dir[name] = {};
@@ -92,7 +93,7 @@
 
     function enterDir(name) {
       const dir = getDir();
-      if (dir[name] && typeof dir[name] === 'object' && !dir[name].content) { path.push(name); render(); }
+      if (dir[name] && typeof dir[name] === 'object' && !Object.hasOwn(dir[name], 'content')) { path.push(name); render(); }
     }
 
     function parentDir() {
@@ -101,6 +102,8 @@
 
     render();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

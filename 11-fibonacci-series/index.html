@@ -65,6 +65,7 @@
     .result .seq { color: #60a5fa; }
     .back { margin-top: 18px; display: inline-block; color: #94a3b8; font-size: 0.9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -75,7 +76,7 @@
     </div>
     <button onclick="generate()">Generate</button>
     <div class="result" id="result"><span class="seq">0, 1, 1, 2, 3, 5, 8, 13, 21, 34</span></div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     function generate() {
@@ -88,6 +89,8 @@
       el.innerHTML = `<span class="seq">${seq.join(', ')}</span>`;
     }
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

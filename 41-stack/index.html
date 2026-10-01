@@ -24,6 +24,7 @@
     .info { color: #94a3b8; font-size: .9rem; }
     .back { margin-top: 16px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -38,7 +39,7 @@
     </div>
     <div class="stack-display" id="stackDisplay"></div>
     <div class="info" id="stackInfo">Stack is empty</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     const stack = [];
@@ -46,7 +47,7 @@
       const display = document.getElementById('stackDisplay');
       const info = document.getElementById('stackInfo');
       if (stack.length === 0) { display.innerHTML = '<div style="color:#475569;padding:40px 0">Stack is empty</div>'; info.textContent = 'Size: 0 | Top: none'; return; }
-      display.innerHTML = stack.map((val, i) => `<div class="stack-item${i === stack.length - 1 ? ' top' : ''}">${val} ${i === stack.length - 1 ? '⬅ TOP' : ''}</div>`).join('');
+      display.innerHTML = stack.map((val, i) => `<div class="stack-item${i === stack.length - 1 ? ' top' : ''}">${escapeHTML(val)} ${i === stack.length - 1 ? '⬅ TOP' : ''}</div>`).join('');
       info.textContent = `Size: ${stack.length} | Top: ${stack[stack.length - 1]}`;
     }
     function push() {
@@ -66,6 +67,8 @@
     function clearStack() { stack.length = 0; render(); }
     render();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

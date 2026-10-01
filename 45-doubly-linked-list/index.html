@@ -25,6 +25,7 @@
     .info { color: #94a3b8; font-size: .85rem; }
     .back { margin-top: 14px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -43,7 +44,7 @@
     <div style="font-size:.85rem;color:#94a3b8;margin-bottom:4px;margin-top:8px">Backward:</div>
     <div class="list-display" id="backwardDisplay"></div>
     <div class="info" id="dllInfo">Size: 0</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     let dll = [];
@@ -57,10 +58,10 @@
         info.textContent = 'Size: 0 | Empty'; return;
       }
       fwd.innerHTML = '<span style="color:#475569">NULL⇄</span>' + dll.map((val, i) =>
-        `<div class="node${i === 0 ? ' head' : ''}${i === dll.length - 1 ? ' tail' : ''}">${val}</div>` + (i < dll.length - 1 ? '<span class="arrow">⇄</span>' : '')
+        `<div class="node${i === 0 ? ' head' : ''}${i === dll.length - 1 ? ' tail' : ''}">${escapeHTML(val)}</div>` + (i < dll.length - 1 ? '<span class="arrow">⇄</span>' : '')
       ).join('') + '<span class="arrow">⇄NULL</span>';
       bwd.innerHTML = '<span style="color:#475569">NULL⇄</span>' + [...dll].reverse().map((val, i) =>
-        `<div class="node${i === dll.length - 1 ? ' head' : ''}${i === 0 ? ' tail' : ''}">${val}</div>` + (i < dll.length - 1 ? '<span class="arrow">⇄</span>' : '')
+        `<div class="node${i === dll.length - 1 ? ' head' : ''}${i === 0 ? ' tail' : ''}">${escapeHTML(val)}</div>` + (i < dll.length - 1 ? '<span class="arrow">⇄</span>' : '')
       ).join('') + '<span class="arrow">⇄NULL</span>';
       info.textContent = `Size: ${dll.length} | Head: ${dll[0]} | Tail: ${dll[dll.length - 1]}`;
     }
@@ -71,6 +72,8 @@
     function clearList() { dll.length = 0; render(); }
     render();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

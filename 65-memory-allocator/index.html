@@ -20,6 +20,7 @@
     .info { color: #94a3b8; font-size: .85rem; }
     .back { display: inline-block; margin-top: 12px; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -33,7 +34,7 @@
     </div>
     <div class="mem-display" id="memDisplay"></div>
     <div class="info" id="memInfo">Total: 64 KB | Free: 64 KB | Used: 0 KB</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     const TOTAL = 64;
@@ -86,6 +87,8 @@
     function resetMem() { blocks = [{ start: 0, size: TOTAL, status: 'free' }]; render(); }
     render();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

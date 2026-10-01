@@ -21,6 +21,7 @@
     .result .steps { font-size: .85rem; color: #94a3b8; margin-top: 4px; }
     .back { margin-top: 16px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -29,7 +30,7 @@
     <div class="group"><label>Expression</label><input type="text" id="exprInput" value="3 + 4 * 2 / (1 - 5) ^ 2" /></div>
     <button onclick="evaluate()">Evaluate</button>
     <div class="result" id="result"><div class="value">3.5</div><div class="steps">Result: 3.5</div></div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     function evaluate() {
@@ -38,13 +39,16 @@
       try {
         // Replace ^ with ** for power
         const sanitized = expr.replace(/\^/g, '**');
+        if (!/^[\d\s.()+*/%\-]+$/.test(sanitized)) throw new Error('Use numeric arithmetic only.');
         const result = Function('"use strict"; return (' + sanitized + ')')();
-        el.innerHTML = `<div class="value">${result}</div><div class="steps">${expr} = ${result}</div>`;
+        el.innerHTML = `<div class="value">${result}</div><div class="steps">${escapeHTML(expr)} = ${result}</div>`;
       } catch (e) {
         el.innerHTML = `<div style="color:#fb923c;font-size:1.5rem">❌ Error</div><div class="steps">Invalid expression</div>`;
       }
     }
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

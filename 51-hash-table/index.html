@@ -27,6 +27,7 @@
     .info { color: #94a3b8; font-size: .85rem; }
     .back { margin-top: 14px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -42,7 +43,7 @@
     </div>
     <div class="ht-display" id="htDisplay"></div>
     <div class="info" id="htInfo">Size: 0</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     const SIZE = 8;
@@ -91,7 +92,7 @@
       display.innerHTML = table.map((bucket, i) => {
         total += bucket.length;
         const items = bucket.length > 0
-          ? bucket.map(e => `<span class="ht-item">${e.key}:${e.val}</span>`).join('')
+          ? bucket.map(e => `<span class="ht-item">${escapeHTML(e.key)}:${escapeHTML(e.val)}</span>`).join('')
           : '<span class="ht-empty">∅</span>';
         return `<div class="ht-row"><span class="ht-idx">[${i}]</span><div class="ht-bucket">${items}</div></div>`;
       }).join('');
@@ -99,6 +100,8 @@
     }
     render();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

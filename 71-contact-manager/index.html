@@ -23,6 +23,7 @@ h1{margin-bottom:14px;font-size:1.4rem}
 .info{color:#94a3b8;font-size:.85rem;margin-top:8px}
 .back{display:inline-block;margin-top:12px;color:#94a3b8;font-size:.9rem}
 </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
 <div class="card">
@@ -36,35 +37,38 @@ h1{margin-bottom:14px;font-size:1.4rem}
 <input type="text" class="search-box" id="searchBox" placeholder="Search contacts..." oninput="render()" />
 <div class="contact-list" id="contactList"></div>
 <div class="info" id="conInfo">Contacts: 0</div>
-<a class="back" href="../../index.html">← Back to Hub</a>
+<a class="back" href="../index.html">← Back to Hub</a>
 </div>
 <script>
-let contacts = JSON.parse(localStorage.getItem('contacts')) || [
+let storedContacts; try { const data = JSON.parse(localStorage.getItem('contacts')); if (Array.isArray(data) && data.every(c => c && typeof c.name === 'string' && typeof c.phone === 'string')) storedContacts = data; } catch {}
+let contacts = storedContacts || [
 {name:'Alice Johnson',phone:'555-0101'},{name:'Bob Smith',phone:'555-0102'},{name:'Charlie Brown',phone:'555-0103'}
 ];
-function save(){localStorage.setItem('contacts',JSON.stringify(contacts));render();}
+function save(){try{localStorage.setItem('contacts',JSON.stringify(contacts));}catch{alert('Browser storage is unavailable; changes last only until refresh.');}render();}
 function addContact(){
 const n=document.getElementById('conName').value.trim(),p=document.getElementById('conPhone').value.trim();
 if(!n||!p)return;contacts.push({name:n,phone:p});save();
 }
 function deleteContact(i){contacts.splice(i,1);save();}
 function exportContacts(){
-const csv='Name,Phone\n'+contacts.map(c=>`${c.name},${c.phone}`).join('\n');
+const csv='Name,Phone\n'+contacts.map(c=>[c.name,c.phone].map(value=>'"'+value.replace(/"/g,'""')+'"').join(',')).join('\n');
 const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');
-a.href=URL.createObjectURL(blob);a.download='contacts.csv';a.click();
+a.href=URL.createObjectURL(blob);a.download='contacts.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
 }
 function render(){
 const q=document.getElementById('searchBox').value.toLowerCase();
 const filtered=contacts.filter(c=>c.name.toLowerCase().includes(q)||c.phone.includes(q));
 document.getElementById('contactList').innerHTML=filtered.map((c,i)=>{
 const idx=contacts.indexOf(c);
-return `<div class="contact-item"><div><div class="name">${c.name}</div><div class="phone">${c.phone}</div></div><button class="del" onclick="deleteContact(${idx})">✕</button></div>`;
+return `<div class="contact-item"><div><div class="name">${escapeHTML(c.name)}</div><div class="phone">${escapeHTML(c.phone)}</div></div><button class="del" onclick="deleteContact(${idx})">✕</button></div>`;
 }).join('')||'<div style="color:#475569;padding:20px;text-align:center">No contacts found</div>';
 document.getElementById('conInfo').textContent=`Contacts: ${contacts.length} (showing ${filtered.length})`;
 }
 render();
 </script>
 </div>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

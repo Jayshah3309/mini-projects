@@ -28,6 +28,7 @@
     .info { color: #94a3b8; font-size: .85rem; }
     .back { margin-top: 14px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -43,7 +44,7 @@
     </div>
     <div class="pq-display" id="pqDisplay"></div>
     <div class="info" id="pqInfo">Size: 0</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     let pq = [];
@@ -61,7 +62,7 @@
       if (pq.length === 0) { alert('Queue empty!'); return; }
       const item = pq.shift();
       render();
-      alert(`Dequeued: ${item.val} (priority: ${item.pri})`);
+      alert(`Dequeued: ${escapeHTML(item.val)} (priority: ${item.pri})`);
     }
 
     function peek() {
@@ -79,12 +80,14 @@
         info.textContent = 'Size: 0'; return;
       }
       display.innerHTML = `<div class="pq-list">${pq.map((item, i) =>
-        `<div class="pq-item"><span class="val">${item.val}</span><span class="pri">P: ${item.pri}</span></div>`
+        `<div class="pq-item"><span class="val">${escapeHTML(item.val)}</span><span class="pri">P: ${item.pri}</span></div>`
       ).join('')}</div>`;
       info.textContent = `Size: ${pq.length} | Highest priority: ${pq[0].val} (P: ${pq[0].pri})`;
     }
     render();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

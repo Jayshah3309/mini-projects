@@ -26,6 +26,7 @@
     .info { color: #94a3b8; font-size: .9rem; }
     .back { margin-top: 14px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -42,7 +43,7 @@
     </div>
     <div class="list-display" id="listDisplay"></div>
     <div class="info" id="llInfo">Size: 0 | Empty</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     let ll = [];
@@ -51,7 +52,7 @@
       const info = document.getElementById('llInfo');
       if (ll.length === 0) { display.innerHTML = '<div style="color:#475569;">NULL (empty list)</div>'; info.textContent = 'Size: 0 | Empty'; return; }
       display.innerHTML = ll.map((val, i) => {
-        let node = `<div class="node${i === 0 ? ' head' : ''}">${val}</div>`;
+        let node = `<div class="node${i === 0 ? ' head' : ''}">${escapeHTML(val)}</div>`;
         if (i < ll.length - 1) node += '<span class="arrow">→</span>';
         return node;
       }).join('') + '<span class="null-arrow">→NULL</span>';
@@ -76,6 +77,8 @@
     function clearList() { ll.length = 0; render(); }
     render();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

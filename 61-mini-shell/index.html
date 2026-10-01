@@ -20,6 +20,7 @@
     .input-line input { flex: 1; background: transparent; border: none; color: #c0caf5; font-family: 'Consolas', monospace; font-size: .85rem; outline: none; }
     .back { display: inline-block; margin-top: 10px; color: #565f89; font-size: .85rem; font-family: 'Segoe UI', sans-serif; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -31,7 +32,7 @@
       <span>$</span>
       <input type="text" id="cmdInput" placeholder="Type a command..." autofocus />
     </div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     const terminal = document.getElementById('terminal');
@@ -54,13 +55,13 @@
       const args = parts.slice(1);
       if (!cmd.trim()) return;
       history.push(cmd);
-      print(`<span class="prompt">${cwd}$</span> <span class="cmd">${cmd}</span>`);
+      print(`<span class="prompt">${cwd}$</span> <span class="cmd">${escapeHTML(cmd)}</span>`);
       
       switch(command) {
         case 'help':
-          print('Available: help, echo, pwd, ls, cd, cat, mkdir, touch, rm, clear, date, whoami, exit');
+          print('Available: help, echo, pwd, ls, cd, clear, date, whoami, exit');
           break;
-        case 'echo': print(args.join(' ')); break;
+        case 'echo': print(escapeHTML(args.join(' '))); break;
         case 'pwd': print(cwd); break;
         case 'date': print(new Date().toString()); break;
         case 'whoami': print('user'); break;
@@ -89,6 +90,8 @@
     });
     print('Type <span class="info">help</span> to see available commands.');
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

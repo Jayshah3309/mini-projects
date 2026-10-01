@@ -23,6 +23,7 @@
     .code-row .freq { color: #94a3b8; }
     .back { margin-top: 16px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -31,7 +32,7 @@
     <div class="group"><label>Enter text</label><input type="text" id="inputStr" value="hello world" /></div>
     <button onclick="encode()">Generate Huffman Codes</button>
     <div class="result" id="result"></div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     function encode() {
@@ -66,11 +67,13 @@
 
       el.innerHTML = `<div style="color:#94a3b8;font-size:.85rem;margin-bottom:8px">Character → Code</div>` +
         Object.entries(codes).sort().map(([char, code]) =>
-          `<div class="code-row"><span class="char">${char === ' ' ? '␣' : char}</span><span class="code">${code}</span><span class="freq">freq: ${freq[char]}</span></div>`
+          `<div class="code-row"><span class="char">${escapeHTML(char === ' ' ? '␣' : char)}</span><span class="code">${code}</span><span class="freq">freq: ${freq[char]}</span></div>`
         ).join('') +
         `<div style="margin-top:10px;color:#7fffd4;font-size:.85rem">Huffman: ${totalBits} bits | Fixed (8-bit): ${fixedBits} bits | Compression: ${((1 - totalBits/fixedBits)*100).toFixed(1)}%</div>`;
     }
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

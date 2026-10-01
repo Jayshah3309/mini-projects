@@ -25,6 +25,7 @@
     .info { color: #94a3b8; font-size: .85rem; }
     .back { margin-top: 14px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -39,7 +40,7 @@
     </div>
     <div class="graph-display" id="graphDisplay"></div>
     <div class="info" id="graphInfo">Nodes: 0 | Edges: 0</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     let graph = {};
@@ -79,7 +80,7 @@
       display.innerHTML = nodes.sort().map(node => {
         const neighbors = graph[node].sort();
         edges += neighbors.length;
-        return `<div class="g-node"><span class="g-label">${node}</span> <span class="g-arrow">→</span> <span class="g-neighbor">[${neighbors.join(', ') || 'none'}]</span></div>`;
+        return `<div class="g-node"><span class="g-label">${escapeHTML(node)}</span> <span class="g-arrow">→</span> <span class="g-neighbor">[${escapeHTML(neighbors.join(', ') || 'none')}]</span></div>`;
       }).join('');
       info.textContent = `Nodes: ${nodes.length} | Edges: ${edges / 2}`;
     }
@@ -92,6 +93,8 @@
     addEdge.call({});
     render();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

@@ -17,6 +17,7 @@
     .status { display: flex; justify-content: space-between; color: #94a3b8; font-size: .8rem; margin-top: 8px; }
     .back { display: inline-block; margin-top: 12px; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -41,7 +42,7 @@
       <span id="charCount">Chars: 20</span>
       <span id="lineCount">Lines: 1</span>
     </div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     const editor = document.getElementById('editor');
@@ -69,6 +70,8 @@
     editor.addEventListener('input', updateStats);
     updateStats();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

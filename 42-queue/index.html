@@ -26,6 +26,7 @@
     .info { color: #94a3b8; font-size: .9rem; }
     .back { margin-top: 16px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -40,7 +41,7 @@
     </div>
     <div class="queue-display" id="queueDisplay"></div>
     <div class="info" id="queueInfo">Queue is empty</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     const queue = [];
@@ -52,7 +53,7 @@
         let extra = '';
         if (i === 0 && queue.length > 0) extra = ' (FRONT)';
         else if (i === queue.length - 1) extra = ' (REAR)';
-        return `<div class="queue-item${i === 0 ? ' front' : i === queue.length - 1 ? ' rear' : ''}">${val}${extra}</div>` + (i < queue.length - 1 ? '<span class="arrow">→</span>' : '');
+        return `<div class="queue-item${i === 0 ? ' front' : i === queue.length - 1 ? ' rear' : ''}">${escapeHTML(val)}${extra}</div>` + (i < queue.length - 1 ? '<span class="arrow">→</span>' : '');
       }).join('');
       info.textContent = `Size: ${queue.length} | Front: ${queue[0] || 'none'} | Rear: ${queue[queue.length - 1] || 'none'}`;
     }
@@ -73,6 +74,8 @@
     function clearQueue() { queue.length = 0; render(); }
     render();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

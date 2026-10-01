@@ -22,6 +22,7 @@
     .out-text { color: #60a5fa; font-weight: 600; }
     .back { margin-top: 18px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -29,35 +30,22 @@
     <p style="color:#94a3b8;margin-bottom:12px;font-size:.9rem">Shift letters by a fixed number of positions</p>
     <div class="group"><label>Message</label><textarea id="message" rows="2">HELLO WORLD</textarea></div>
     <div class="row">
-      <div class="group"><label>Shift</label><input type="number" id="shift" value="3" min="1" max="25" /></div>
+      <div class="group"><label>Shift</label><input type="number" id="shift" value="3" step="1" /></div>
       <div class="group" style="display:flex;align-items:flex-end;gap:6px">
         <button onclick="encrypt()" style="background:#2563eb">Encrypt</button>
         <button onclick="decrypt()" style="background:#7c3aed">Decrypt</button>
       </div>
     </div>
     <div class="result" id="result"><span class="out-text">KHOOR ZRUOG</span></div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
-    function caesar(text, shift, decode = false) {
-      if (decode) shift = -shift;
-      return text.split('').map(ch => {
-        if (ch >= 'A' && ch <= 'Z') return String.fromCharCode(((ch.charCodeAt(0) - 65 + shift + 26) % 26) + 65);
-        if (ch >= 'a' && ch <= 'z') return String.fromCharCode(((ch.charCodeAt(0) - 97 + shift + 26) % 26) + 97);
-        return ch;
-      }).join('');
-    }
-    function encrypt() {
-      const msg = document.getElementById('message').value;
-      const shift = parseInt(document.getElementById('shift').value) || 3;
-      document.getElementById('result').innerHTML = `<span class="out-text">${caesar(msg, shift)}</span>`;
-    }
-    function decrypt() {
-      const msg = document.getElementById('message').value;
-      const shift = parseInt(document.getElementById('shift').value) || 3;
-      document.getElementById('result').innerHTML = `<span class="out-text">${caesar(msg, shift, true)}</span>`;
-    }
-  </script>
+function caesar(text,shift,decode=false){if(!Number.isFinite(shift)||!Number.isInteger(shift))throw new Error('Use an integer shift.');const normalized=((shift%26)+26)%26;const offset=decode?(26-normalized)%26:normalized;return Array.from(text,ch=>{const code=ch.charCodeAt(0);const base=code>=65&&code<=90?65:code>=97&&code<=122?97:null;return base===null?ch:String.fromCharCode(base+(code-base+offset)%26)}).join('');}
+function transformMessage(decode){const result=document.getElementById('result');try{const raw=document.getElementById('shift').value;if(raw.trim()==='')throw new Error('Enter a shift.');result.textContent=caesar(document.getElementById('message').value,Number(raw),decode)}catch(e){result.textContent=e.message}}
+function encrypt(){transformMessage(false)}function decrypt(){transformMessage(true)}
+</script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

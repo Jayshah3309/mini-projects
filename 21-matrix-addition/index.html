@@ -44,6 +44,7 @@
     button:hover { background: #1d4ed8; }
     .back { margin-top: 18px; display: inline-block; color: #94a3b8; font-size: 0.9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -55,7 +56,7 @@
     </div>
     <div class="matrices" id="matrices"></div>
     <div class="result-box" id="result"></div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     let rows = 3, cols = 3;
@@ -98,6 +99,8 @@
     window.addEventListener('input', (e) => { if (e.target.tagName === 'INPUT') compute(); });
     buildMatrices();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

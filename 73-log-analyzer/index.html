@@ -21,6 +21,7 @@ button{padding:10px 24px;border:none;border-radius:8px;color:#fff;font-size:.9re
 .info{color:#94a3b8;font-size:.85rem}
 .back{display:inline-block;margin-top:10px;color:#94a3b8;font-size:.9rem}
 </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
 <div class="card">
@@ -37,7 +38,7 @@ button{padding:10px 24px;border:none;border-radius:8px;color:#fff;font-size:.9re
 <div class="stats"><div class="stat-box"><div class="num" id="totalLogs">7</div><div class="lbl">Total</div></div><div class="stat-box"><div class="num" id="infoCount">3</div><div class="lbl" style="color:#4ade80">Info</div></div><div class="stat-box"><div class="num" id="warnCount">2</div><div class="lbl" style="color:#fb923c">Warn</div></div><div class="stat-box"><div class="num" id="errorCount">2</div><div class="lbl" style="color:#dc2626">Error</div></div></div>
 <div class="log-output" id="logOutput"></div>
 <div class="info" id="logInfo">Click Analyze to parse logs</div>
-<a class="back" href="../../index.html">← Back to Hub</a>
+<a class="back" href="../index.html">← Back to Hub</a>
 </div>
 <script>
 function analyze(){
@@ -51,7 +52,7 @@ if(line.includes('[INFO]')){cls='info';info++;}
 else if(line.includes('[WARN]')){cls='warn';warn++;}
 else if(line.includes('[ERROR]')){cls='error';error++;}
 else other++;
-return `<div class="log-line ${cls}">${line}</div>`;
+return `<div class="log-line ${cls}">${escapeHTML(line)}</div>`;
 }).join('');
 document.getElementById('totalLogs').textContent=lines.length;
 document.getElementById('infoCount').textContent=info;
@@ -61,6 +62,8 @@ document.getElementById('logInfo').textContent=`Parsed ${lines.length} log entri
 }
 analyze();
 </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

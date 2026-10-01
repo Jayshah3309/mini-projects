@@ -1,0 +1,12 @@
+(() => {
+ const items=window.MINI_PROJECTS||[];
+ const slug=decodeURIComponent(location.pathname).split('/').filter(Boolean).find(part=>/^\d+-/.test(part));
+ const item=items.find(p=>p.slug===slug);if(!item)return;
+ const card=document.querySelector('.card')||document.querySelector('main')||document.body;
+ const style=document.createElement('style');style.textContent='.project-guide{margin-top:24px;padding-top:18px;border-top:1px solid #64788a;text-align:left;font:14px/1.6 system-ui;color:#d1deea}.project-guide a{color:#a7e5d0}.project-guide summary{cursor:pointer;font-weight:650;color:#edf4f3}.project-guide p{margin:12px 0}.project-guide nav{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}.project-guide a:focus-visible,.project-guide summary:focus-visible{outline:3px solid #a7e5d0;outline-offset:3px}';document.head.append(style);
+ const guide=document.createElement('aside');guide.className='project-guide';const details=document.createElement('details');const summary=document.createElement('summary');summary.textContent='Project guide / '+(item.status==='planned'?'Planned':'Interactive demo');details.append(summary);
+ for(const [label,text] of [['Purpose',item.description],['Example',item.example],[item.status==='planned'?'Plan':'How it works',item.approach],['Scope',item.note]]){const p=document.createElement('p');const strong=document.createElement('strong');strong.textContent=label+': ';p.append(strong,document.createTextNode(text));details.append(p)}guide.append(details);
+ const nav=document.createElement('nav');nav.setAttribute('aria-label','Project navigation');const links=[['Gallery','../index.html'],['Documentation','https://github.com/Jayshah3309/mini-projects/blob/main/'+item.slug+'/README.md']];const index=items.indexOf(item);if(index>0)links.push(['← Previous','../'+items[index-1].slug+'/index.html']);if(index<items.length-1)links.push(['Next →','../'+items[index+1].slug+'/index.html']);for(const [title,url] of links){const a=document.createElement('a');a.textContent=title;a.href=url;nav.append(a)}guide.append(nav);card.append(guide);
+ document.querySelectorAll('input,textarea,select').forEach(el=>{if(!el.hasAttribute('aria-label')&&!el.labels?.length)el.setAttribute('aria-label',el.getAttribute('placeholder')||el.id.replace(/([A-Z])/g,' $1')||'Project input')});
+ ['result','message','output','tableWrapper','resultDisplay'].forEach(id=>{const el=document.getElementById(id);if(el){el.setAttribute('aria-live','polite');el.setAttribute('aria-atomic','true')}});
+})();

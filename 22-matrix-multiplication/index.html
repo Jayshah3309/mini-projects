@@ -43,6 +43,7 @@
     button:hover { background: #1d4ed8; }
     .back { margin-top: 18px; display: inline-block; color: #94a3b8; font-size: 0.9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -57,9 +58,10 @@
     </div>
     <div class="matrices" id="matrices"></div>
     <div class="result-box" id="result"></div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
+    let dimensions;
     function build() {
       const ar = Math.min(5, Math.max(1, parseInt(document.getElementById('ar').value) || 2));
       const ac = Math.min(5, Math.max(1, parseInt(document.getElementById('ac').value) || 3));
@@ -67,6 +69,7 @@
       const bc = Math.min(5, Math.max(1, parseInt(document.getElementById('bc').value) || 2));
       document.getElementById('ar').value = ar; document.getElementById('ac').value = ac;
       document.getElementById('br').value = br; document.getElementById('bc').value = bc;
+      dimensions = {ar,ac,br,bc};
       const note = document.getElementById('note');
       note.style.display = ac === br ? 'none' : 'block';
       const m = document.getElementById('matrices');
@@ -85,10 +88,7 @@
       compute();
     }
     function compute() {
-      const ar = parseInt(document.getElementById('ar').value);
-      const ac = parseInt(document.getElementById('ac').value);
-      const br = parseInt(document.getElementById('br').value);
-      const bc = parseInt(document.getElementById('bc').value);
+      const {ar,ac,br,bc} = dimensions;
       const el = document.getElementById('result');
       if (ac !== br) { el.innerHTML = '<span style="color:#f87171">❌ Inner dimensions must match (A_cols = B_rows)</span>'; return; }
       const A = Array.from({length: ar}, (_, r) => Array.from({length: ac}, (_, c) => parseFloat(document.getElementById(`A${r}${c}`).value) || 0));
@@ -104,9 +104,11 @@
       }
       el.innerHTML = html + '</table>';
     }
-    window.addEventListener('input', (e) => { if (e.target.tagName === 'INPUT' && e.target.id) compute(); });
+    window.addEventListener('input', (e) => { if (e.target.tagName === 'INPUT' && /^[AB]\d\d$/.test(e.target.id)) compute(); });
     build();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

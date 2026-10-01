@@ -20,6 +20,7 @@ button{padding:10px 24px;border:none;border-radius:8px;color:#fff;font-size:.9re
 .info{color:#94a3b8;font-size:.85rem;margin-top:8px}
 .back{display:inline-block;margin-top:10px;color:#94a3b8;font-size:.9rem}
 </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
 <div class="card">
@@ -41,7 +42,7 @@ file = /var/log/app.log</textarea>
 <button onclick="parseConfig()" style="background:#2563eb">Parse Config</button>
 <div class="result" id="configResult"></div>
 <div class="info" id="configInfo"></div>
-<a class="back" href="../../index.html">← Back to Hub</a>
+<a class="back" href="../index.html">← Back to Hub</a>
 </div>
 <script>
 function parseConfig(){
@@ -67,9 +68,9 @@ let html='';
 let total=0;
 for(const[section,keys]of Object.entries(config)){
 if(Object.keys(keys).length>0){
-html+=`<div class="config-row"><span class="section">[${section}]</span></div>`;
+html+=`<div class="config-row"><span class="section">[${escapeHTML(section)}]</span></div>`;
 for(const[key,val]of Object.entries(keys)){
-html+=`<div class="config-row"><span class="key">${key}</span><span class="val">${val}</span></div>`;
+html+=`<div class="config-row"><span class="key">${escapeHTML(key)}</span><span class="val">${escapeHTML(val)}</span></div>`;
 total++;
 }
 }
@@ -79,6 +80,8 @@ document.getElementById('configInfo').textContent=`Parsed ${total} entries acros
 }
 parseConfig();
 </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

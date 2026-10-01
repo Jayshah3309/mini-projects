@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440" role="img" aria-labelledby="title desc">
+<title id="title">Multi Threaded Calculator guide preview</title><desc id="desc">Illustrated guide card, not a screenshot. Goal: calculate while the main page remains responsive.</desc>
+<rect width="800" height="440" rx="24" fill="#142534"/><circle cx="750" cy="20" r="170" fill="#235448"/>
+<text x="36" y="48" fill="#a7e5d0" font-size="18" font-family="sans-serif">80 / PLANNED</text>
+<text x="36" y="102" fill="#f4f5ee" font-size="32" font-weight="700" font-family="sans-serif">Multi Threaded Calculator</text>
+<rect x="36" y="204" width="728" height="164" rx="12" fill="#21394e"/>
+<text x="56" y="239" fill="#dceae7" font-size="21" font-family="sans-serif">Goal: calculate while the main page remains responsive.</text>
+<text x="36" y="409" fill="#b8ceca" font-size="15" font-family="sans-serif">ILLUSTRATED GUIDE PREVIEW / Systems &amp; simulations</text></svg>

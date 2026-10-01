@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>File Compression Tool</title>
+  <title>Text Compression Lab</title>
   <style>*{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',sans-serif;min-height:100vh;background:linear-gradient(135deg,#0f172a,#1e293b);color:#e2e8f0;display:flex;justify-content:center;align-items:center}
 .card{background:rgba(30,41,59,0.9);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;width:min(560px,94vw);text-align:center}
@@ -18,45 +18,27 @@ button{padding:10px 24px;border:none;border-radius:8px;color:#fff;font-size:.95r
 .info{color:#94a3b8;font-size:.85rem;margin-top:8px}
 .back{display:inline-block;margin-top:12px;color:#94a3b8;font-size:.9rem}
 </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
 <div class="card">
-<h1>🗜️ File Compression Tool</h1>
-<p class="subtitle">Run-length encoding + Base64 (simulated compression)</p>
+<h1>🗜️ Text Compression Lab</h1>
+<p class="subtitle">Structured run-length encoding: JSON [character, count] pairs. Paste the encoded JSON into Input text to decompress.</p>
 <div class="group"><label>Input text</label><textarea id="inputText" rows="3">AAAAAABBBCCCCCDDEEEEEFFFFFFFFGGGHHH</textarea></div>
 <button onclick="compress()" style="background:#2563eb">Compress</button>
 <button onclick="decompress()" style="background:#7c3aed">Decompress</button>
 <div class="result" id="result"></div>
 <div class="info" id="compressInfo"></div>
-<a class="back" href="../../index.html">← Back to Hub</a>
+<a class="back" href="../index.html">← Back to Hub</a>
 </div>
 <script>
-function compress(){
-const text=document.getElementById('inputText').value;
-if(!text){document.getElementById('result').innerHTML='❌ No text';return;}
-let result='',count=1;
-for(let i=0;i<text.length;i++){
-if(text[i]===text[i+1])count++;
-else{result+=text[i]+count;count=1;}
-}
-const base64=btoa(text);
-const ratio=((result.length/text.length)*100).toFixed(1);
-document.getElementById('result').innerHTML=`<div style="color:#4ade80;font-weight:700">RLE: ${result}</div><div style="color:#60a5fa;margin-top:6px;font-size:.85rem">Base64: ${base64.substring(0,60)}${base64.length>60?'...':''}</div>`;
-document.getElementById('compressInfo').textContent=`Original: ${text.length} chars | Compressed: ${result.length} chars (${ratio}%)`;
-}
-function decompress(){
-const text=document.getElementById('inputText').value;
-if(!text)return;
-let result='';
-for(let i=0;i<text.length;i+=2){
-const ch=text[i],count=parseInt(text[i+1]);
-if(!isNaN(count))result+=ch.repeat(count);
-else result+=ch;
-}
-document.getElementById('result').innerHTML=`<div style="color:#4ade80">${result}</div>`;
-document.getElementById('compressInfo').textContent=`Decompressed: ${result.length} chars`;
-}
+function encodeRuns(text){const runs=[];for(const ch of text){const last=runs.at(-1);if(last&&last[0]===ch)last[1]++;else runs.push([ch,1])}return JSON.stringify(runs)}
+function decodeRuns(text){const runs=JSON.parse(text);if(!Array.isArray(runs))throw new Error('Use a JSON array of [character, count] pairs.');let size=0;for(const run of runs){if(!Array.isArray(run)||run.length!==2||typeof run[0]!=='string'||Array.from(run[0]).length!==1||!Number.isInteger(run[1])||run[1]<1)throw new Error('Each run needs one Unicode character and a positive integer count.');size+=run[0].length*run[1];if(size>1000000)throw new Error('Decoded text is limited to one million code units.')}return runs.map(([ch,count])=>ch.repeat(count)).join('')}
+function compress(){const text=document.getElementById('inputText').value;const result=encodeRuns(text);document.getElementById('result').textContent=result;document.getElementById('compressInfo').textContent='Original: '+text.length+' code units; JSON: '+result.length+' characters. JSON can be larger than the source.'}
+function decompress(){try{const text=decodeRuns(document.getElementById('inputText').value);document.getElementById('result').textContent=text;document.getElementById('compressInfo').textContent='Decoded: '+text.length+' code units'}catch(e){document.getElementById('result').textContent=e.message}}
 </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

@@ -20,6 +20,7 @@
     .info { color: #94a3b8; font-size: .85rem; }
     .back { margin-top: 18px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -27,7 +28,7 @@
     <div class="group"><label>Array (comma-separated)</label><textarea id="arrayInput" rows="2">29, 10, 14, 37, 13, 33, 48, 22</textarea></div>
     <button onclick="sortArray()">Sort</button>
     <div class="result" id="result">Click Sort to begin</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     function sortArray() {
@@ -46,6 +47,8 @@
       el.innerHTML = `<div class="sorted">✅ Sorted: [${arr.join(', ')}]</div><div class="info">Original: [${original.join(', ')}] | Passes: ${passes} | Swaps: ${swaps}</div>`;
     }
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

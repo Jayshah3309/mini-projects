@@ -25,6 +25,7 @@
     .info { color: #94a3b8; font-size: .9rem; }
     .back { margin-top: 14px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -38,7 +39,7 @@
     </div>
     <div class="list-display" id="listDisplay"></div>
     <div class="info" id="cllInfo">Size: 0</div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     let cll = [];
@@ -47,7 +48,7 @@
       const info = document.getElementById('cllInfo');
       if (cll.length === 0) { display.innerHTML = '<div style="color:#475569;">Empty</div>'; info.textContent = 'Size: 0'; return; }
       display.innerHTML = cll.map((val, i) =>
-        `<div class="node${i === 0 ? ' head' : ''}">${val}</div>` + (i < cll.length - 1 ? '<span class="arrow">→</span>' : '')
+        `<div class="node${i === 0 ? ' head' : ''}">${escapeHTML(val)}</div>` + (i < cll.length - 1 ? '<span class="arrow">→</span>' : '')
       ).join('') + '<span class="arrow">→</span><div class="node head" style="background:#4ade8022;border-color:#4ade80">↻ HEAD</div>';
       info.textContent = `Size: ${cll.length} | Head: ${cll[0]} | Tail points back to head`;
     }
@@ -56,6 +57,8 @@
     function clearList() { cll.length = 0; render(); }
     render();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

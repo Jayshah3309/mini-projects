@@ -60,6 +60,7 @@
     .span2 { grid-column: span 2; }
     .back { margin-top: 20px; display: inline-block; color: #94a3b8; font-size: 0.9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -86,7 +87,7 @@
       <button onclick="press('.')">.</button>
       <button class="eq span2" onclick="calculate()">=</button>
     </div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     const display = document.getElementById('display');
@@ -101,12 +102,15 @@
     }
     function calculate() {
       try {
+        if (!/^[\d\s.()+*/%\-]+$/.test(expression)) throw new Error('Use numeric arithmetic only.');
         const result = Function('"use strict"; return (' + expression + ')')();
         display.textContent = result;
         expression = String(result);
       } catch { display.textContent = 'Error'; expression = ''; }
     }
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 

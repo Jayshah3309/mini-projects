@@ -23,6 +23,7 @@
     .freq-row .count { color: #94a3b8; min-width: 40px; text-align: right; }
     .back { margin-top: 18px; display: inline-block; color: #94a3b8; font-size: .9rem; }
   </style>
+<script src="../assets/safe-text.js"></script>
 </head>
 <body>
   <div class="card">
@@ -30,7 +31,7 @@
     <div class="group"><label>Enter text</label><input type="text" id="inputStr" value="mississippi river" /></div>
     <button onclick="analyze()">Analyze</button>
     <div class="freq-table" id="freqTable"></div>
-    <a class="back" href="../../index.html">← Back to Hub</a>
+    <a class="back" href="../index.html">← Back to Hub</a>
   </div>
   <script>
     function analyze() {
@@ -42,11 +43,13 @@
       const entries = Object.entries(freq).sort((a, b) => b[1] - a[1]);
       const maxCount = entries.length > 0 ? entries[0][1] : 1;
       el.innerHTML = entries.map(([ch, count]) =>
-        `<div class="freq-row"><span class="char">${ch}</span><div class="bar-wrapper"><div class="bar" style="width:${(count/maxCount)*100}%"></div></div><span class="count">${count}</span></div>`
+        `<div class="freq-row"><span class="char">${escapeHTML(ch)}</span><div class="bar-wrapper"><div class="bar" style="width:${(count/maxCount)*100}%"></div></div><span class="count">${count}</span></div>`
       ).join('') || '<div style="color:#94a3b8">No characters found</div>';
     }
     analyze();
   </script>
+<script src="../assets/projects.js"></script>
+<script src="../assets/project-guide.js"></script>
 </body>
 </html>
 
