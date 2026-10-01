@@ -51,3 +51,7 @@ Expected output: `count=4 sum=10 min=1 max=4 mean=2.5 median=2.5`. On Windows, u
 ## Actual screenshots
 
 [Desktop](../assets/screenshots/25-array-statistics-desktop.png) · [Mobile](../assets/screenshots/25-array-statistics-mobile.png). See the [screenshot guide](../docs/SCREENSHOTS.md) for capture conditions.
+
+## Pseudocode and complexity
+
+See the [Array Statistics lesson](../docs/ALGORITHMS.md#25-array-statistics) for a worked example, implementation costs and an exercise.

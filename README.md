@@ -183,7 +183,7 @@ The final command requires GCC or a compiler selected with `CC`. See [testing an
 
 ## What is new
 
-Three management apps now save validated records locally. Thirteen algorithms have controllable learning traces, and 26 topics have pseudocode, worked examples and complexity notes. Eight folders include C11 versions alongside their browser demos.
+Three management apps now save validated records locally. Thirteen algorithms have controllable learning traces, and 32 topics have pseudocode, worked examples and complexity notes. Eight folders include C11 versions alongside their browser demos.
 
 ## License
 
