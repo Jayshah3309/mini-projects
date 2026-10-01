@@ -352,3 +352,99 @@ COUNT symbols; repeatedly join the two least frequent trees; assign 0/1 down bra
 
 **Exercise:** Trace a boundary case by hand, compare with the demo, then explain where the stated complexity comes from. For sorting, try duplicates and an already-sorted array; for structures, try empty removal; for graphs, explain visited-state handling.
 
+
+## 21. Matrix Addition
+
+[Project and source](../21-matrix-addition/README.md)
+
+```text
+FOR each row r and column c: C[r,c] = A[r,c] + B[r,c]
+```
+
+**Time:** O(rows × columns). **Space:** O(rows × columns) output.
+
+**Worked example:** [[1,2],[3,4]] + [[5,6],[7,8]] = [[6,8],[10,12]].
+
+**Scope:** Both matrices must have identical dimensions.
+
+**Exercise:** Reproduce the example by hand, then try a zero value and explain the cost of doubling the input dimensions or length.
+
+## 22. Matrix Multiplication
+
+[Project and source](../22-matrix-multiplication/README.md)
+
+```text
+FOR each output row i and column j: C[i,j] = SUM over k of A[i,k] × B[k,j]
+```
+
+**Time:** O(A_rows × A_cols × B_cols). **Space:** O(A_rows × B_cols) output, plus stored inputs.
+
+**Worked example:** [1,2,3] × [[4],[5],[6]] = [[32]].
+
+**Scope:** A_cols must equal B_rows. Click Set after changing dimensions.
+
+**Exercise:** Reproduce the example by hand, then try a zero value and explain the cost of doubling the input dimensions or length.
+
+## 23. Matrix Transpose
+
+[Project and source](../23-matrix-transpose/README.md)
+
+```text
+FOR each input row r and column c: output[c,r] = input[r,c]
+```
+
+**Time:** O(rows × columns). **Space:** O(rows × columns) output.
+
+**Worked example:** [[1,2,3],[4,5,6]] becomes [[1,4],[2,5],[3,6]].
+
+**Scope:** Transpose switches dimensions; it does not sort values.
+
+**Exercise:** Reproduce the example by hand, then try a zero value and explain the cost of doubling the input dimensions or length.
+
+## 24. Matrix Determinant
+
+[Project and source](../24-matrix-determinant/README.md)
+
+```text
+IF size is 1 or 2: use base formula; ELSE sum signed first-row entries multiplied by determinants of their minors
+```
+
+**Time:** O(n!) for recursive cofactor expansion. **Space:** O(n³) peak matrices along recursive calls.
+
+**Worked example:** det([[1,2],[3,4]]) = 1×4 − 2×3 = −2.
+
+**Scope:** The browser caps matrix size at 5. Floating point arithmetic can round; this is not an optimized elimination algorithm.
+
+**Exercise:** Reproduce the example by hand, then try a zero value and explain the cost of doubling the input dimensions or length.
+
+## 25. Array Statistics
+
+[Project and source](../25-array-statistics/README.md)
+
+```text
+PARSE finite numbers; accumulate sum; sort a copy; use the middle element or average of two middle elements for median
+```
+
+**Time:** O(n log n), sorting dominates. **Space:** O(n) parsed values and sorted copy.
+
+**Worked example:** [1,2,3,4] has sum 10, mean 2.5 and median 2.5.
+
+**Scope:** Browser input is limited to 10000 values. The C command-line version accepts 256.
+
+**Exercise:** Reproduce the example by hand, then try a zero value and explain the cost of doubling the input dimensions or length.
+
+## 60. Polynomial Calculator
+
+[Project and source](../60-polynomial-calculator/README.md)
+
+```text
+result = 0; FOR each coefficient from highest degree to constant: result = result × x + coefficient
+```
+
+**Time:** O(n) evaluation using Horner’s method. **Space:** O(1) evaluation, plus O(n) parsed coefficients and display.
+
+**Worked example:** Coefficients [3,-5,2,7], x=2: result passes through 3, 1, 4, 15.
+
+**Scope:** Coefficients are highest degree first. Numeric precision is finite; invalid tokens are filtered by the current demo.
+
+**Exercise:** Reproduce the example by hand, then try a zero value and explain the cost of doubling the input dimensions or length.

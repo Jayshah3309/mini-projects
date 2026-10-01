@@ -36,3 +36,7 @@ At most six rows/columns; select Set after changing size.
 Trace the example through the source, try an empty input and a boundary case, and explain the result. Read the limits above before extending the demo.
 
 The preview is an illustration of a documented use case, not a captured screenshot.
+
+## Pseudocode and complexity
+
+See the [Matrix Transpose lesson](../docs/ALGORITHMS.md#23-matrix-transpose) for a worked example, implementation costs and an exercise.

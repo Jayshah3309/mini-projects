@@ -36,3 +36,7 @@ Numeric coefficients; not symbolic algebra.
 Trace the example through the source, try an empty input and a boundary case, and explain the result. Read the limits above before extending the demo.
 
 The preview is an illustration of a documented use case, not a captured screenshot.
+
+## Pseudocode and complexity
+
+See the [Polynomial Calculator lesson](../docs/ALGORITHMS.md#60-polynomial-calculator) for a worked example, implementation costs and an exercise.
