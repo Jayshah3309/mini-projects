@@ -4,7 +4,7 @@
 
 The current demos use **HTML, CSS and JavaScript**, usually embedded in each `index.html`. The topics include algorithms and C programming exercises, but native C programs are not present in this collection. Networking and embedded projects needing another runtime are clearly marked as planned.
 
-[Open the gallery](index.html) · [Detailed catalogue](docs/PROJECTS.md) · [Roadmap](docs/ROADMAP.md) · [Contributing](CONTRIBUTING.md)
+[Open the live gallery](https://jayshah3309.github.io/mini-projects/) · [Detailed catalogue](docs/PROJECTS.md) · [Roadmap](docs/ROADMAP.md) · [Contributing](CONTRIBUTING.md)
 
 ## Run locally
 
