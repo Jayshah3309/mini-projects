@@ -142,6 +142,25 @@ for (const slug of [
     async ({ page }, testInfo) => {
       await page.goto("/" + slug + (slug ? "/" : ""));
       await expect(page.locator("h1")).toBeVisible();
+      if (slug === "48-avl-tree") {
+        for (const value of [30, 20, 10]) {
+          await page.locator("#avlInput").fill(String(value));
+          await page
+            .getByRole("button", { name: "Insert", exact: true })
+            .click();
+        }
+        await page
+          .locator(".trace-panel")
+          .getByRole("button", { name: "Step", exact: true })
+          .click();
+      }
+      if (slug === "28-bubble-sort") {
+        await page.getByRole("button", { name: "Sort", exact: true }).click();
+        await page
+          .locator(".trace-panel")
+          .getByRole("button", { name: "Step", exact: true })
+          .click();
+      }
       await page.evaluate(() => document.fonts.ready);
       const folder = path.join(__dirname, "../../artifacts/screenshots");
       fs.mkdirSync(folder, { recursive: true });
@@ -150,7 +169,7 @@ for (const slug of [
           folder,
           (slug || "gallery") + "-" + testInfo.project.name + ".png",
         ),
-        fullPage: true,
+        fullPage: Boolean(slug),
       });
     },
   );
