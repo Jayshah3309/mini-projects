@@ -1,2 +1,55 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inventory Management</title><link rel="stylesheet" href="../assets/management.css"><link rel="stylesheet" href="../assets/accessibility.css">
-</head><body data-management="inventory"><main><a href="../index.html">← Project gallery</a><h1>Inventory Management</h1><p>Manage stock quantities, unit prices and total stock value.</p><p>Records are saved in this browser when storage is available. Use sample data; this is a learning demo.</p><section class="panel" aria-labelledby="form-title"><h2 id="form-title">Add or edit a record</h2><form id="record-form"><div id="fields"></div><button id="save" type="submit">Add record</button><button id="cancel" type="button" hidden>Cancel edit</button></form><p id="status" role="status"></p></section><section class="panel" aria-labelledby="list-title"><h2 id="list-title">Records</h2><label for="search">Search all fields</label><input type="search" id="search" placeholder="Search records"><p id="count" role="status"></p><button id="export" type="button">Export JSON backup</button><div class="table-scroll" tabindex="0" role="region" aria-label="Records table"><table><thead><tr id="columns"></tr></thead><tbody id="records"></tbody></table></div><p id="empty" hidden>No matching records.</p></section></main><script src="../assets/management-core.js"></script><script src="../assets/management.js"></script><script src="../assets/projects.js"></script><script src="../assets/project-guide.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="../assets/management.css" />
+    <link rel="stylesheet" href="../assets/accessibility.css" />
+  </head>
+  <body data-management="inventory">
+    <main>
+      <a href="../index.html">← Project gallery</a>
+      <h1>Inventory Management</h1>
+      <p>Manage stock quantities, unit prices and total stock value.</p>
+      <p>
+        Records are saved in this browser when storage is available. Use sample
+        data; this is a learning demo.
+      </p>
+      <section class="panel" aria-labelledby="form-title">
+        <h2 id="form-title">Add or edit a record</h2>
+        <form id="record-form">
+          <div id="fields"></div>
+          <button id="save" type="submit">Add record</button
+          ><button id="cancel" type="button" hidden>Cancel edit</button>
+        </form>
+        <p id="status" role="status"></p>
+      </section>
+      <section class="panel" aria-labelledby="list-title">
+        <h2 id="list-title">Records</h2>
+        <label for="search">Search all fields</label
+        ><input type="search" id="search" placeholder="Search records" />
+        <p id="count" role="status"></p>
+        <button id="export" type="button">Export JSON backup</button>
+        <div
+          class="table-scroll"
+          tabindex="0"
+          role="region"
+          aria-label="Records table"
+        >
+          <table>
+            <thead>
+              <tr id="columns"></tr>
+            </thead>
+            <tbody id="records"></tbody>
+          </table>
+        </div>
+        <p id="empty" hidden>No matching records.</p>
+      </section>
+    </main>
+    <script src="../assets/management-core.js"></script>
+    <script src="../assets/management.js"></script>
+    <script src="../assets/projects.js"></script>
+    <script src="../assets/project-guide.js"></script>
+  </body>
+</html>

@@ -1,1 +1,68 @@
-.trace-panel{margin:24px 0;border-top:1px solid #98afbf;padding-top:20px;text-align:left;color:#edf4f3;font:15px/1.6 system-ui}.trace-panel h2{font-size:22px}.trace-panel p{margin:12px 0}.trace-panel label{display:block;margin:10px 0 6px;font-weight:600}.trace-panel input{max-width:100%;width:100%;padding:10px;background:#142534;color:#edf4f3;border:1px solid #98afbf;border-radius:6px}.trace-controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.trace-controls button{width:auto;min-width:64px;padding:9px 12px;background:#a7e5d0;color:#142534;font:600 14px system-ui;border:0;border-radius:6px}.trace-controls button:disabled{opacity:.55;cursor:default}.trace-values{display:flex;gap:8px;flex-wrap:wrap;min-height:48px}.trace-values span{padding:8px 12px;border:1px solid #98afbf;border-radius:6px;background:#142534}.trace-values .trace-active{background:#a7e5d0;color:#142534}.trace-panel :focus-visible{outline:3px solid #f4ddb3;outline-offset:3px}
+.trace-panel {
+  margin: 24px 0;
+  border-top: 1px solid #98afbf;
+  padding-top: 20px;
+  text-align: left;
+  color: #edf4f3;
+  font: 15px/1.6 system-ui;
+}
+.trace-panel h2 {
+  font-size: 22px;
+}
+.trace-panel p {
+  margin: 12px 0;
+}
+.trace-panel label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 600;
+}
+.trace-panel input {
+  max-width: 100%;
+  width: 100%;
+  padding: 10px;
+  background: #142534;
+  color: #edf4f3;
+  border: 1px solid #98afbf;
+  border-radius: 6px;
+}
+.trace-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+.trace-controls button {
+  width: auto;
+  min-width: 64px;
+  padding: 9px 12px;
+  background: #a7e5d0;
+  color: #142534;
+  font: 600 14px system-ui;
+  border: 0;
+  border-radius: 6px;
+}
+.trace-controls button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.trace-values {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-height: 48px;
+}
+.trace-values span {
+  padding: 8px 12px;
+  border: 1px solid #98afbf;
+  border-radius: 6px;
+  background: #142534;
+}
+.trace-values .trace-active {
+  background: #a7e5d0;
+  color: #142534;
+}
+.trace-panel :focus-visible {
+  outline: 3px solid #f4ddb3;
+  outline-offset: 3px;
+}

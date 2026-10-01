@@ -14,7 +14,7 @@ npm run test:browser
 
 `npm run check` checks all project paths, local links, SVG previews and JavaScript syntax. Unit tests exercise catalogue filtering, statistics, encoding, record validation and the learning algorithms. Browser tests open all 100 pages at desktop/mobile sizes, exercise gallery filters, the three management apps and trace controls, and scan the gallery and management apps with axe-core.
 
-Browser tests include actual screenshot capture into `artifacts/screenshots/`. Screenshots are inspection artifacts, not automatic pixel-comparison baselines. GitHub Actions uploads screenshots, browser reports and failure traces for 14 days. Run the same screenshot test in a consistent browser/environment before comparing images.
+Browser tests include actual screenshot capture into `artifacts/screenshots/`. Screenshots are inspection artifacts, not automatic pixel-comparison baselines. GitHub Actions uses its preinstalled Chrome browser, and uploads screenshots, browser reports and failure traces for 14 days. Run the same screenshot test in a consistent browser/environment before comparing images.
 
 ```sh
 python tools/check_native.py
@@ -29,3 +29,5 @@ Automated accessibility scans cannot prove accessibility. Use the keyboard to re
 For interactive traces, verify Step advances once, Play advances at the chosen interval, Pause stops and Reset applies new input. Tree traces intentionally show path-labelled snapshots rather than geometric node drawings. The existing demo and the learning trace are independent interfaces.
 
 No test suite certifies every possible input or makes these demos production systems.
+
+Use `npm run format` to format the new shared app modules, learning modules and tests with Prettier.

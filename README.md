@@ -1,5 +1,7 @@
 # Mini Projects
 
+[![Repository checks](https://github.com/Jayshah3309/mini-projects/actions/workflows/checks.yml/badge.svg)](https://github.com/Jayshah3309/mini-projects/actions/workflows/checks.yml)
+
 100 learning projects: **73 interactive browser demos and 27 planned project briefs**.
 
 The current demos use **HTML, CSS and JavaScript**, usually embedded in each `index.html`. The topics include algorithms and C programming exercises, but eight selected folders now also contain independent native C11 programs. Networking and embedded projects needing another runtime are clearly marked as planned.
@@ -148,6 +150,10 @@ assets/                    Catalogue, styles/scripts and illustrated previews
 docs/PROJECTS.md           Features, examples and limits
 docs/ROADMAP.md            Planned project goals
 CONTRIBUTING.md            Contribution guide
+native/                    Shared C input helper and native guide
+tests/                     Unit and desktop/mobile browser tests
+tools/                     Repository and native compilation checks
+.github/                   Checks workflow and contributor templates
 ```
 
 ## Scope notes

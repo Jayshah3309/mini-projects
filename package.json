@@ -7,10 +7,12 @@
     "test": "node --test tests/unit.test.cjs",
     "check": "python tools/check_repository.py",
     "test:browser": "playwright test",
-    "serve": "python -m http.server 8000"
+    "serve": "python -m http.server 8000",
+    "format": "prettier --write \"assets/management*\" \"assets/learning*\" assets/accessibility.css tests playwright.config.cjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@playwright/test": "^1.56.0",
-    "@axe-core/playwright": "^4.10.2"
+    "prettier": "^3.9.9"
   }
 }

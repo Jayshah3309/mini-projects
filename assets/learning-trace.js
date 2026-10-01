@@ -1,5 +1,151 @@
-(()=>{const ids={28:'bubble',29:'selection',30:'insertion',31:'merge',32:'quick',47:'bst',48:'avl',49:'heap',53:'dfs',54:'bfs',55:'dijkstra',56:'kruskal',57:'prim'},slug=location.pathname.split('/').find(s=>/^\d+-/.test(s)),kind=ids[Number(slug?.split('-')[0])];if(!kind)return;
- const host=document.querySelector('.card')||document.querySelector('main'),panel=document.createElement('section');panel.className='trace-panel';panel.setAttribute('aria-label','Step-by-step learning visualization');const heading=document.createElement('h2');heading.textContent='Follow the algorithm';const info=document.createElement('p');info.textContent=['dfs','bfs','dijkstra','kruskal','prim'].includes(kind)?'Uses the same fixed sample graph as this demo. Reset starts a new trace.':'Independent learning trace. Enter up to 20 numbers; Reset applies your input.';const label=document.createElement('label'),input=document.createElement('input');input.id='trace-input';label.htmlFor=input.id;const noInput=['kruskal','prim'].includes(kind),nodeInput=['dfs','bfs','dijkstra'].includes(kind);label.textContent=nodeInput?'Start node':'Values for the trace';input.value=nodeInput?'A':'5, 2, 9, 1, 5, 6';const speedLabel=document.createElement('label'),speed=document.createElement('input');speed.id='trace-speed';speed.type='range';speed.min='100';speed.max='1500';speed.step='100';speed.value='600';speedLabel.htmlFor=speed.id;speedLabel.textContent='Step interval (milliseconds)';const speedValue=document.createElement('output');speedValue.htmlFor=speed.id;speedValue.textContent=speed.value;speed.addEventListener('input',()=>{speedValue.textContent=speed.value;if(timer){pause();play()}});const controls=document.createElement('div');controls.className='trace-controls';const display=document.createElement('div');display.className='trace-values';const status=document.createElement('p');status.id='trace-status';status.setAttribute('role','status');let steps=[],index=0,timer=null;
- function pause(){clearInterval(timer);timer=null;playButton.disabled=!steps.length||index>=steps.length-1;pauseButton.disabled=true}function render(){const state=steps[index];display.replaceChildren();if(state){state.values.forEach((value,i)=>{const cell=document.createElement('span');cell.textContent=value;cell.className=state.active?.includes(i)?'trace-active':'';display.append(cell)});status.textContent='Step '+(index+1)+' of '+steps.length+': '+state.message}stepButton.disabled=!steps.length||index>=steps.length-1;playButton.disabled=Boolean(timer)||stepButton.disabled;if(stepButton.disabled)pause()}
- function next(){if(index<steps.length-1){index++;render()}}function play(){if(timer||index>=steps.length-1)return;timer=setInterval(next,Number(speed.value));playButton.disabled=true;pauseButton.disabled=false}function reset(){pause();try{const lib=LearningAlgorithms;if(['dfs','bfs'].includes(kind))steps=lib.traversal(kind,input.value.trim().toUpperCase());else if(kind==='dijkstra')steps=lib.dijkstra(input.value.trim().toUpperCase());else if(noInput)steps=lib.mst(kind);else{const values=lib.numbers(input.value);steps=['bst','avl','heap'].includes(kind)?lib.tree(kind,values):lib.sorting(kind,values)}index=0;render()}catch(e){steps=[];display.replaceChildren();status.textContent=e.message;stepButton.disabled=playButton.disabled=true}}
- function button(text,fn){const b=document.createElement('button');b.type='button';b.textContent=text;b.addEventListener('click',fn);controls.append(b);return b}const stepButton=button('Step',next),playButton=button('Play',play),pauseButton=button('Pause',pause);button('Reset',reset);panel.append(heading,info);if(!noInput)panel.append(label,input);panel.append(speedLabel,speed,speedValue,controls,display,status);host.append(panel);document.addEventListener('visibilitychange',()=>{if(document.hidden)pause()});window.addEventListener('pagehide',pause);reset();})();
+(() => {
+  const ids = {
+      28: "bubble",
+      29: "selection",
+      30: "insertion",
+      31: "merge",
+      32: "quick",
+      47: "bst",
+      48: "avl",
+      49: "heap",
+      53: "dfs",
+      54: "bfs",
+      55: "dijkstra",
+      56: "kruskal",
+      57: "prim",
+    },
+    slug = location.pathname.split("/").find((s) => /^\d+-/.test(s)),
+    kind = ids[Number(slug?.split("-")[0])];
+  if (!kind) return;
+  const host =
+      document.querySelector(".card") || document.querySelector("main"),
+    panel = document.createElement("section");
+  panel.className = "trace-panel";
+  panel.setAttribute("aria-label", "Step-by-step learning visualization");
+  const heading = document.createElement("h2");
+  heading.textContent = "Follow the algorithm";
+  const info = document.createElement("p");
+  info.textContent = ["dfs", "bfs", "dijkstra", "kruskal", "prim"].includes(
+    kind,
+  )
+    ? "Uses the same fixed sample graph as this demo. Reset starts a new trace."
+    : "Independent learning trace. Enter up to 20 numbers; Reset applies your input.";
+  const label = document.createElement("label"),
+    input = document.createElement("input");
+  input.id = "trace-input";
+  label.htmlFor = input.id;
+  const noInput = ["kruskal", "prim"].includes(kind),
+    nodeInput = ["dfs", "bfs", "dijkstra"].includes(kind);
+  label.textContent = nodeInput ? "Start node" : "Values for the trace";
+  input.value = nodeInput ? "A" : "5, 2, 9, 1, 5, 6";
+  const speedLabel = document.createElement("label"),
+    speed = document.createElement("input");
+  speed.id = "trace-speed";
+  speed.type = "range";
+  speed.min = "100";
+  speed.max = "1500";
+  speed.step = "100";
+  speed.value = "600";
+  speedLabel.htmlFor = speed.id;
+  speedLabel.textContent = "Step interval (milliseconds)";
+  const speedValue = document.createElement("output");
+  speedValue.htmlFor = speed.id;
+  speedValue.textContent = speed.value;
+  speed.addEventListener("input", () => {
+    speedValue.textContent = speed.value;
+    if (timer) {
+      pause();
+      play();
+    }
+  });
+  const controls = document.createElement("div");
+  controls.className = "trace-controls";
+  const display = document.createElement("div");
+  display.className = "trace-values";
+  const status = document.createElement("p");
+  status.id = "trace-status";
+  status.setAttribute("role", "status");
+  let steps = [],
+    index = 0,
+    timer = null;
+  function pause() {
+    clearInterval(timer);
+    timer = null;
+    playButton.disabled = !steps.length || index >= steps.length - 1;
+    pauseButton.disabled = true;
+  }
+  function render() {
+    const state = steps[index];
+    display.replaceChildren();
+    if (state) {
+      state.values.forEach((value, i) => {
+        const cell = document.createElement("span");
+        cell.textContent = value;
+        cell.className = state.active?.includes(i) ? "trace-active" : "";
+        display.append(cell);
+      });
+      status.textContent =
+        "Step " + (index + 1) + " of " + steps.length + ": " + state.message;
+    }
+    stepButton.disabled = !steps.length || index >= steps.length - 1;
+    playButton.disabled = Boolean(timer) || stepButton.disabled;
+    if (stepButton.disabled) pause();
+  }
+  function next() {
+    if (index < steps.length - 1) {
+      index++;
+      render();
+    }
+  }
+  function play() {
+    if (timer || index >= steps.length - 1) return;
+    timer = setInterval(next, Number(speed.value));
+    playButton.disabled = true;
+    pauseButton.disabled = false;
+  }
+  function reset() {
+    pause();
+    try {
+      const lib = LearningAlgorithms;
+      if (["dfs", "bfs"].includes(kind))
+        steps = lib.traversal(kind, input.value.trim().toUpperCase());
+      else if (kind === "dijkstra")
+        steps = lib.dijkstra(input.value.trim().toUpperCase());
+      else if (noInput) steps = lib.mst(kind);
+      else {
+        const values = lib.numbers(input.value);
+        steps = ["bst", "avl", "heap"].includes(kind)
+          ? lib.tree(kind, values)
+          : lib.sorting(kind, values);
+      }
+      index = 0;
+      render();
+    } catch (e) {
+      steps = [];
+      display.replaceChildren();
+      status.textContent = e.message;
+      stepButton.disabled = playButton.disabled = true;
+    }
+  }
+  function button(text, fn) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = text;
+    b.addEventListener("click", fn);
+    controls.append(b);
+    return b;
+  }
+  const stepButton = button("Step", next),
+    playButton = button("Play", play),
+    pauseButton = button("Pause", pause);
+  button("Reset", reset);
+  panel.append(heading, info);
+  if (!noInput) panel.append(label, input);
+  panel.append(speedLabel, speed, speedValue, controls, display, status);
+  host.append(panel);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) pause();
+  });
+  window.addEventListener("pagehide", pause);
+  reset();
+})();
